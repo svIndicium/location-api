@@ -1,6 +1,6 @@
 package hu.indicium.dev.locationapi;
 
-import hu.indicium.dev.locations.LocationApiApplication;
+import hu.indicium.dev.locations.LocationServiceApplication;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 @DisplayName("Application")
 @Tag("Application")
-class PaymentServiceApplicationTests {
+class LocationServiceApplicationTests {
 
     @Test
     @DisplayName("Test context loading")
@@ -26,7 +26,7 @@ class PaymentServiceApplicationTests {
     @Test
     @DisplayName("Test startup")
     void main() {
-        LocationApiApplication.main(new String[]{});
+        LocationServiceApplication.main(new String[]{});
         assertThat(true).isTrue();
     }
 
