@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: location-api
+  IMAGE_NAME: locations-api
   DB_URL: jdbc:postgresql://localhost:5432/postgres
   DB_USER: postgres
   DB_PASS: postgres
@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jar
-          path: target/location-0.0.1-SNAPSHOT.jar
+          path: target/locations-0.0.1-SNAPSHOT.jar
       - name: SonarCloud Scan
         run: ./mvnw verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
@@ -97,7 +97,7 @@ jobs:
           name: jar
 
       - name: Move jar to folder
-        run: mkdir target && mv location-0.0.1-SNAPSHOT.jar target/
+        run: mkdir target && mv locations-0.0.1-SNAPSHOT.jar target/
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
