@@ -1,6 +1,7 @@
 package hu.indicium.dev.location.domain.model.location;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Embeddable
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class LocationDetails implements Serializable {
     @Column(name = "street")
     private String street;
