@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "hu.indicium.mq.exchange-name",
+      "type": "java.lang.String",
+      "description": "Description for hu.indicium.mq.exchange-name."
+    }
+  ]
+}
