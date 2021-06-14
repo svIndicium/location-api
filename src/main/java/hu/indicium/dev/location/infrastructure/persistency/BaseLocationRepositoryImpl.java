@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
+import java.util.UUID;
 
 @Repository
 @AllArgsConstructor
@@ -20,6 +21,16 @@ public class BaseLocationRepositoryImpl implements LocationRepository {
     private final BaseLocationJpaRepository baseLocationJpaRepository;
 
     private final PartnerLocationJpaRepository partnerLocationJpaRepository;
+
+    @Override
+    public LocationId nextIdentity() {
+        UUID uuid = UUID.randomUUID();
+        LocationId locationId = LocationId.fromId(uuid);
+        if (baseLocationJpaRepository.existsByLocationId(locationId)) {
+            return nextIdentity();
+        }
+        return locationId;
+    }
 
     @Override
     public BaseLocation findLocationById(LocationId locationId) {
