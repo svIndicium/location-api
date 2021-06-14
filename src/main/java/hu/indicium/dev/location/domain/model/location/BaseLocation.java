@@ -16,4 +16,9 @@ public abstract class BaseLocation extends AssertionConcern {
 
     @Embedded
     private LocationDetails locationDetails;
+
+    public BaseLocation(LocationId locationId, LocationDetails locationDetails) {
+        this.locationId = locationId;
+        this.locationDetails = locationDetails;
+    }
 }

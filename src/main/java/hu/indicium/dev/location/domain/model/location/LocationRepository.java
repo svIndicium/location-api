@@ -5,6 +5,9 @@ import hu.indicium.dev.location.domain.model.partner.PartnerId;
 import java.util.Collection;
 
 public interface LocationRepository {
+
+    LocationId nextIdentity();
+
     BaseLocation findLocationById(LocationId locationId);
 
     Collection<BaseLocation> getAllLocations();
