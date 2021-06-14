@@ -1,6 +1,5 @@
-package hu.indicium.dev.locationapi;
+package hu.indicium.dev.location;
 
-import hu.indicium.dev.locations.LocationServiceApplication;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
