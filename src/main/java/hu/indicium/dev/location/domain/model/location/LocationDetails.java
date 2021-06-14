@@ -1,10 +1,16 @@
 package hu.indicium.dev.location.domain.model.location;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LocationDetails implements Serializable {
     @Column(name = "street")
     private String street;
