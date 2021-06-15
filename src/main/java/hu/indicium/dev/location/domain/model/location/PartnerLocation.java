@@ -13,4 +13,9 @@ import javax.persistence.Entity;
 public class PartnerLocation extends BaseLocation {
     @Embedded
     private PartnerId partnerId;
+
+    public PartnerLocation(LocationId locationId, PartnerId partnerId, LocationDetails locationDetails) {
+        super(locationId, locationDetails);
+        this.partnerId = partnerId;
+    }
 }
