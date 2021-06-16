@@ -56,12 +56,12 @@ public class LocationController {
     }
 
     @PostMapping("/locations")
-    @ResponseStatus(HttpStatus.OK)
-    public Response<LocationDto> getLocationById(@RequestBody CreateLocationCommand createLocationCommand) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Response<LocationDto> createLocation(@RequestBody CreateLocationCommand createLocationCommand) {
         LocationId locationId = locationService.createLocation(createLocationCommand);
         BaseLocation baseLocation = locationQueryService.getLocationByLocationId(locationId);
         BaseLocationDto baseLocationDto = this.toDto(baseLocation);
-        return ResponseBuilder.ok()
+        return ResponseBuilder.created()
                 .data(baseLocationDto)
                 .build();
     }
@@ -76,6 +76,18 @@ public class LocationController {
                 .collect(Collectors.toSet());
         return ResponseBuilder.ok()
                 .data(locationDtos)
+                .build();
+    }
+
+    @PostMapping("/partners/{partnerUuid}/locations")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Response<PartnerLocationDto> createLocationForPartner(@PathVariable UUID partnerUuid, @RequestBody CreateLocationCommand createLocationCommand) {
+        PartnerId partnerId = PartnerId.fromUuid(partnerUuid);
+        LocationId locationId = locationService.createLocationForPartner(partnerId, createLocationCommand);
+        PartnerLocation partnerLocation = (PartnerLocation) locationQueryService.getLocationByLocationId(locationId);
+        PartnerLocationDto partnerLocationDto = new PartnerLocationDto(partnerLocation);
+        return ResponseBuilder.created()
+                .data(partnerLocationDto)
                 .build();
     }
 
